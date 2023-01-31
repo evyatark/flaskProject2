@@ -36,25 +36,10 @@ def show_subpath(subpath):
     return f'Subpath {escape(subpath)}'
 
 
-# https://flask.palletsprojects.com/en/2.2.x/quickstart/#http-methods
-# @app.get('/login')
-# def login_get():
-#     return show_the_login_form()
-#
-#
-# @app.post('/login')
-# def login_post():
-#     return do_the_login()
-
-
-
-
-
 @app.route('/hello/')
 @app.route('/hello/<name>')
 def hello(name=None):
     return render_template('hello.html', name=name)
-
 
 
 @app.route('/index1')
@@ -84,9 +69,8 @@ def post(post_id):
 
 @app.route('/')
 def index():
-    #posts = [{'id':1, 'title': 'First Post', 'content': 'Content for the first post', 'created': '10:04'}]
+    # posts = [{'id':1, 'title': 'First Post', 'content': 'Content for the first post', 'created': '10:04'}]
     return render_template('index.html', posts=posts)
-
 
 
 @app.route('/create', methods=('GET', 'POST'))
