@@ -1,15 +1,16 @@
 from flask import Flask
 from markupsafe import escape
+from flask import render_template
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/h')
 def hello_world():  # put application's code here
     return 'Hello World!'
 
 
-@app.route('/hello')
+@app.route('/hello2')
 def hello_world_2():  # put application's code here
     return '<h1>Hello World! flaskProject2</h1>'
 
@@ -34,5 +35,30 @@ def show_subpath(subpath):
 
 
 # https://flask.palletsprojects.com/en/2.2.x/quickstart/#http-methods
+# @app.get('/login')
+# def login_get():
+#     return show_the_login_form()
+#
+#
+# @app.post('/login')
+# def login_post():
+#     return do_the_login()
+
+
+
+
+
+@app.route('/hello/')
+@app.route('/hello/<name>')
+def hello(name=None):
+    return render_template('hello.html', name=name)
+
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
 if __name__ == '__main__':
     app.run()
